@@ -1,0 +1,75 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Anypet extends JFrame implements ActionListener
+{
+private final JLabel picture;
+private final JRadioButton birdButton, catButton, dogButton, rabbitButton, pigButton;
+
+    public Anypet() {
+        super("Anypet");
+        setLayout(new FlowLayout());
+
+        birdButton = new JRadioButton("Bird");
+        add(birdButton);
+        birdButton.addActionListener(this);
+
+        catButton = new JRadioButton("Cat");
+        add(catButton);
+        catButton.addActionListener(this);
+
+        dogButton = new JRadioButton("Dog");
+        add(dogButton);
+        dogButton.addActionListener(this);
+
+        rabbitButton = new JRadioButton("Rabbit");
+        add(rabbitButton);
+        rabbitButton.addActionListener(this);
+
+        pigButton = new JRadioButton("Pig");
+        add(pigButton);
+        pigButton.addActionListener(this);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(birdButton);
+        group.add(catButton);
+        group.add(dogButton);
+        group.add(rabbitButton);
+        group.add(pigButton);
+
+        picture = new JLabel(new ImageIcon(getClass().getResource("bird.jpg")));
+        add(picture);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        Object source = event.getSource();
+
+        if (source == birdButton) {
+            picture.setIcon(new ImageIcon(getClass().getResource("bird.jpg")));
+            picture.repaint();
+        } else if (source == catButton) {
+            picture.setIcon(new ImageIcon(getClass().getResource("cat.jpg")));
+            picture.repaint();
+        } else if (source == dogButton) {
+            picture.setIcon(new ImageIcon(getClass().getResource("dog.jpg")));
+            picture.repaint();
+        } else if (source == rabbitButton) {
+            picture.setIcon(new ImageIcon(getClass().getResource("rabbit.jpg")));
+            picture.repaint();
+        } else if (source == pigButton) {
+            picture.setIcon(new ImageIcon(getClass().getResource("pig.jpg")));
+            picture.repaint();
+        }
+    }
+
+    public static void main(String[] args)
+{
+        Anypet Anypet = new Anypet();
+        Anypet.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Anypet.setSize(300, 200);
+        Anypet.setVisible(true);
+    }
+}
